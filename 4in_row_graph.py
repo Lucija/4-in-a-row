@@ -14,10 +14,14 @@ def slika(slovar, dim1, dim2):
     canvas = Canvas(window, width = dim1 * 50, height = dim2 * 50)
     canvas.pack()
     canvas.create_rectangle(0, 0, dim1 * 50, dim2 * 50, fill = "black")
+    barva = "white"
+    for i in range (1, dim1 + 1):
+        for j in range (1, dim2 + 1):
+            canvas.create_oval(i*50 - 50, dim2 * 50 - j*50, i*50+50 - 50, dim2 * 50 - j*50+50, fill = barva)
     for k in slovar:
         if slovar[k] == 1:
-            barva = "white"
-        if slovar[k] == 2:
+            barva = "red"
+        elif slovar[k] == 2:
             barva = "blue"
         canvas.create_oval(k//10*50 - 50, dim2 * 50 - k%10*50, k//10*50+50 - 50, dim2 * 50 - k%10*50+50, fill = barva)
     window.mainloop()
